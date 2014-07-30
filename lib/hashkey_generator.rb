@@ -19,7 +19,7 @@ module HashkeyGenerator
   # *params : a list of parameters as a hash, that needs to be used for hashkey generation
   # *api_key: a unique API key provided to you for authenticating the API calls
   def generate_hashkey_for(params, api_key)
-    sorted_params = sort_params(time_stamped_attributes)
+    sorted_params = sort_params(params)
     params_string = concat_params(sorted_params)
     Digest::SHA1.hexdigest "#{params_string}&#{api_key}"
   end
